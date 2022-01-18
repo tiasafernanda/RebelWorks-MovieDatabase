@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rebelworks-movie-database/static/css/main.a73e761d.css",
+    "main.js": "/rebelworks-movie-database/static/js/main.abae08f4.js",
+    "static/js/787.dfa04141.chunk.js": "/rebelworks-movie-database/static/js/787.dfa04141.chunk.js",
+    "index.html": "/rebelworks-movie-database/index.html",
+    "main.a73e761d.css.map": "/rebelworks-movie-database/static/css/main.a73e761d.css.map",
+    "main.abae08f4.js.map": "/rebelworks-movie-database/static/js/main.abae08f4.js.map",
+    "787.dfa04141.chunk.js.map": "/rebelworks-movie-database/static/js/787.dfa04141.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a73e761d.css",
+    "static/js/main.abae08f4.js"
+  ]
+}
