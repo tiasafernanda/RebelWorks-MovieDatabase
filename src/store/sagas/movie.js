@@ -3,6 +3,9 @@ import {
   GET_MOVIES_BEGIN,
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAIL,
+  GET_MOVIE_DETAIL_BEGIN,
+  GET_MOVIE_DETAIL_SUCCESS,
+  GET_MOVIE_DETAIL_FAIL,
   GET_SIMILAR_MOVIES_BEGIN,
   GET_SIMILAR_MOVIES_SUCCESS,
   GET_SIMILAR_MOVIES_FAIL,
@@ -28,13 +31,30 @@ function* getMovies() {
   }
 }
 
+function* getMovieDetail(action) {
+  const { id } = action;
+  try {
+    const res = yield axios.get(`${BASE_URL}/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`);
+    console.log('detailsaga', res);
+    yield put({
+      type: GET_MOVIE_DETAIL_SUCCESS,
+      payload: res.data,
+    });
+  } catch (err) {
+    yield put({
+      type: GET_MOVIE_DETAIL_FAIL,
+      error: err,
+    });
+  }
+}
+
 function* getSimilarMovies(action) {
-  const { movie_id } = action;
+  const { id } = action;
   try {
     const res = yield axios.get(
-      `${BASE_URL}/movie/${movie_id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
+      `${BASE_URL}/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
     );
-    console.log('res', res);
+    console.log('similarsaga', res);
     yield put({
       type: GET_SIMILAR_MOVIES_SUCCESS,
       payload: res.data,
@@ -49,6 +69,10 @@ function* getSimilarMovies(action) {
 
 export function* watchGetMovies() {
   yield takeEvery(GET_MOVIES_BEGIN, getMovies);
+}
+
+export function* watchGetMovieDetail() {
+  yield takeEvery(GET_MOVIE_DETAIL_BEGIN, getMovieDetail);
 }
 
 export function* watchGetSimilarMovies() {

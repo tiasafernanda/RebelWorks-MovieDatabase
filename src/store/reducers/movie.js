@@ -2,6 +2,9 @@ import {
   GET_MOVIES_BEGIN,
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAIL,
+  GET_MOVIE_DETAIL_BEGIN,
+  GET_MOVIE_DETAIL_SUCCESS,
+  GET_MOVIE_DETAIL_FAIL,
   GET_SIMILAR_MOVIES_BEGIN,
   GET_SIMILAR_MOVIES_SUCCESS,
   GET_SIMILAR_MOVIES_FAIL,
@@ -12,6 +15,11 @@ const initialState = {
     loading: false,
     error: null,
     list: [],
+  },
+  detailMovie: {
+    loading: false,
+    error: null,
+    detail: {},
   },
   similarMovie: {
     loading: false,
@@ -54,6 +62,35 @@ export const movie = (state = initialState, action) => {
           loading: false,
           error: error,
           list: [],
+        },
+      };
+    case GET_MOVIE_DETAIL_BEGIN:
+      return {
+        ...state,
+        detailMovie: {
+          ...state.detailMovie,
+          loading: true,
+          error: null,
+        },
+      };
+    case GET_MOVIE_DETAIL_SUCCESS:
+      return {
+        ...state,
+        detailMovie: {
+          ...state.detailMovie,
+          loading: false,
+          error: null,
+          detail: payload,
+        },
+      };
+    case GET_MOVIE_DETAIL_FAIL:
+      return {
+        ...state,
+        detailMovie: {
+          ...state.detailMovie,
+          loading: false,
+          error: error,
+          detail: [],
         },
       };
     case GET_SIMILAR_MOVIES_BEGIN:
