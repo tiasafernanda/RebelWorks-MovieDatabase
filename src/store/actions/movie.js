@@ -4,9 +4,10 @@ import {
   GET_SIMILAR_MOVIES_BEGIN,
 } from '../../constant/type';
 
-export const getMoviesAction = () => {
+export const getMoviesAction = (page) => {
   return {
     type: GET_MOVIES_BEGIN,
+    page,
   };
 };
 

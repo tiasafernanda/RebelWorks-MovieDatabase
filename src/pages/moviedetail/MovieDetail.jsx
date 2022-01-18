@@ -45,11 +45,6 @@ export default function MovieDetail() {
           <h1>Synopsis</h1>
           <p>{movieDetail.overview}</p>
         </div>
-        <div className={styles.summary}>
-          <ul>
-            
-          </ul>
-        </div>
       </div>
       <div className={styles.similar}>
         <h1>You Might Also like This!</h1>

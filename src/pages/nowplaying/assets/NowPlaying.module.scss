@@ -1,0 +1,39 @@
+.container {
+  .logo {
+    img {
+      width: 3rem;
+      margin: 3rem;
+    }
+  }
+  .category {
+    h1 {
+      color: white;
+      margin-inline: 3rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  .cardContainer {
+    margin-inline: 1rem;
+
+    .cardGroup {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+
+      MovieCard {
+        margin-bottom: 1rem;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-block: 1rem;
+  }
+}

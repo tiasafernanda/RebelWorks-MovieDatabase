@@ -13,10 +13,11 @@ import {
 import axios from 'axios';
 import { BASE_URL } from '../../constant/constant';
 
-function* getMovies() {
+function* getMovies(action) {
+  const { page } = action;
   try {
     const res = yield axios.get(
-      `${BASE_URL}/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}`
+      `${BASE_URL}/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
     );
     console.log('res', res);
     yield put({

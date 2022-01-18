@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import rebelWorksLogo from './assets/rebelworks.png';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -64,7 +64,9 @@ export default function HomePage() {
       </div>
       <div className='nowPlaying'>
         <h1>Now Playing</h1>
-        <p>See All {'>'} </p>
+        <Link to='/nowplaying'>
+          <p>See All {'>'} </p>
+        </Link>
       </div>
       <div className='cardContainer'>
         <div className='cardGroup'>
