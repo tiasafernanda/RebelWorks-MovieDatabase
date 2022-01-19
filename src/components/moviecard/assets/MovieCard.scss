@@ -8,6 +8,11 @@
     color: black;
   }
   .card {
+    .cardOverview {
+      position: relative;
+      bottom: 150px;
+      margin-left: 1rem;
+    }
     background-color: #001e38;
     width: 18rem;
     height: 27.5rem;
@@ -27,6 +32,8 @@
       max-inline-size: -webkit-fill-available;
       min-block-size: -webkit-fill-available;
       object-fit: cover;
+      filter: brightness(70%);
+      -webkit-filter: brightness(70%);
     }
     img::before {
       content: '';
@@ -43,9 +50,6 @@
       color: white;
       font-size: 20px;
       text-decoration: none;
-      position: relative;
-      bottom: 80px;
-      margin-left: 1rem;
     }
   }
   .card:hover {

@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './assets/MovieDetail.module.scss';
 import { BASE_URL_IMAGE } from '../../constant/constant';
 import { useParams, Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export default function MovieDetail() {
   const { id } = useParams();
@@ -16,18 +17,16 @@ export default function MovieDetail() {
     dispatch(getMovieDetailAction(id));
   }, [dispatch, id]);
   const movieDetail = useSelector((state) => state.movie.detailMovie.detail);
-  console.log('detail', movieDetail);
 
   useEffect(() => {
     dispatch(getSimilarMoviesAction(id));
   }, [dispatch, id]);
   const movieSimilar = useSelector((state) => state.movie.similarMovie.similar);
-  console.log('similar', movieSimilar);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id={movieDetail.id}>
       <div className={styles.logo}>
-        <Link to='/'>
+        <Link to='/rebelworks-moviedatabase'>
           <img src={rebelWorksLogo} alt=''></img>
         </Link>
       </div>
@@ -44,11 +43,26 @@ export default function MovieDetail() {
         <div className={styles.synopsis}>
           <h1>Synopsis</h1>
           <p>{movieDetail.overview}</p>
+          <div className={styles.summary}>
+            {movieDetail?.genres?.map((item, index) => {
+              return (
+                <ul className={styles.genre} key={index}>
+                  <li>{item.name}</li>
+                </ul>
+              );
+            })}
+            <p>Release Date : {dayjs(movieDetail.release_date).format('DD MMMM YYYY')}</p>
+            <p>Runtime : {movieDetail.runtime} Minutes</p>
+            <p>Budget : ${movieDetail.budget}</p>
+            <p>Rating : {movieDetail.vote_average}</p>
+          </div>
         </div>
       </div>
-      <div className={styles.similar}>
+      <div className={styles.similar} id={movieDetail.id}>
         <h1>You Might Also like This!</h1>
-        <p>See All {'>'} </p>
+        {/* <Link to={`/rebelworks-moviedatabase/movie/${movieDetail.id}/similar`}>
+          <p>See All {'>'} </p>
+        </Link> */}
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.cardGroup}>
@@ -56,9 +70,10 @@ export default function MovieDetail() {
             return (
               <div key={index}>
                 <div>
-                  <Link to={`/movie/${item.id}`}>
+                  <Link to={`/rebelworks-moviedatabase/movie/${item.id}`}>
                     <MovieCard
                       title={item.title}
+                      rating={item.vote_average}
                       picture={
                         item.poster_path
                           ? `${BASE_URL_IMAGE}` + item.poster_path

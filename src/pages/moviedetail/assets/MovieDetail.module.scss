@@ -4,6 +4,7 @@
   .logo {
     img {
       width: 3rem;
+      margin-top: 1rem;
       margin-bottom: 5rem;
     }
   }
@@ -26,6 +27,29 @@
         padding: 1rem;
       }
     }
+    ul {
+      display: inline-block;
+      list-style: none;
+      padding-left: 20px;
+      li {
+        color: #0feffd;
+        border: 1px solid transparent;
+        background-color: rgba(15, 239, 253, 0.1);
+        padding: 5px;
+        border-radius: 0px 8px;
+        text-align: center;
+      }
+    }
+    .summary {
+      border: 1px solid transparent;
+      border-radius: 0px 8px;
+      background-color: #242424;
+      width: 80%;
+      padding: 1rem;
+      p {
+        margin: 0;
+      }
+    }
   }
   .similar {
     display: flex;
@@ -39,6 +63,10 @@
 
     p {
       color: #ffe922;
+    }
+
+    a {
+      text-decoration: none;
     }
   }
   .cardContainer {

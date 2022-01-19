@@ -19,7 +19,7 @@ function* getMovies(action) {
     const res = yield axios.get(
       `${BASE_URL}/movie/now_playing?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
     );
-    console.log('res', res);
+
     yield put({
       type: GET_MOVIES_SUCCESS,
       payload: res.data,
@@ -36,7 +36,7 @@ function* getMovieDetail(action) {
   const { id } = action;
   try {
     const res = yield axios.get(`${BASE_URL}/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`);
-    console.log('detailsaga', res);
+
     yield put({
       type: GET_MOVIE_DETAIL_SUCCESS,
       payload: res.data,
@@ -55,7 +55,7 @@ function* getSimilarMovies(action) {
     const res = yield axios.get(
       `${BASE_URL}/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
     );
-    console.log('similarsaga', res);
+
     yield put({
       type: GET_SIMILAR_MOVIES_SUCCESS,
       payload: res.data,

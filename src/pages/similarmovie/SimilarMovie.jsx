@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import rebelWorksLogo from './assets/rebelworks.png';
-import { Link } from 'react-router-dom';
-import styles from './assets/NowPlaying.module.scss';
+import { Link, useParams } from 'react-router-dom';
+import styles from './assets/SimilarMovie.module.scss';
 import MovieCard from '../../components/moviecard/MovieCard';
-import { getMoviesAction } from '../../store/actions/movie';
+import { getSimilarMoviesAction } from '../../store/actions/movie';
 import { useSelector, useDispatch } from 'react-redux';
 import { BASE_URL_IMAGE } from '../../constant/constant';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { makeStyles } from '@mui/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const useStyles = makeStyles(() => ({
   ul: {
@@ -18,14 +20,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function NowPlaying() {
+export default function SimilarMovie() {
+  const { id } = useParams();
+  console.log(id);
   const classes = useStyles();
   const dispatch = useDispatch();
-  const movieList = useSelector((state) => state.movie.listMovie.list);
+  const similarMovie = useSelector((state) => state.movie.similarMovie.similar);
 
   useEffect(() => {
-    dispatch(getMoviesAction());
-  }, [dispatch]);
+    dispatch(getSimilarMoviesAction(id));
+  }, [dispatch, id]);
 
   const [page, setPage] = useState(1);
   const [showPage, setShowPage] = useState(false);
@@ -37,7 +41,7 @@ export default function NowPlaying() {
   };
 
   useEffect(() => {
-    dispatch(getMoviesAction(page));
+    dispatch(getSimilarMoviesAction(page));
   }, [dispatch, page, showPage]);
 
   return (
@@ -48,14 +52,14 @@ export default function NowPlaying() {
         </Link>
       </div>
       <div className={styles.category}>
-        <h1>Now Playing</h1>
+        <h1>Similar Movie</h1>
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.cardGroup}>
-          {movieList?.results?.map((item, index) => {
+          {similarMovie?.results?.map((item, index) => {
             return (
               <div key={index}>
-                <Link to={`/rebelworks-moviedatabase/movie/${item.id}`}>
+                <Link to={`/movie/${item.id}`}>
                   <MovieCard
                     title={item.title}
                     picture={
@@ -74,7 +78,7 @@ export default function NowPlaying() {
       <div className={styles.pagination}>
         <Stack spacing={2} color='primary'>
           <Pagination
-            count={movieList.total_pages}
+            count={similarMovie.total_pages}
             onChange={handlePage}
             hidePrevButton
             hideNextButton

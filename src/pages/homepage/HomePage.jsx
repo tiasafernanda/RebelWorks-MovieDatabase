@@ -12,13 +12,14 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Rating from '@mui/material/Rating';
 import SwiperCore, { EffectFade, Navigation, Pagination } from 'swiper';
 SwiperCore.use([EffectFade, Navigation, Pagination]);
 
 export default function HomePage() {
   const dispatch = useDispatch();
   const movieList = useSelector((state) => state.movie.listMovie.list);
-  console.log('movies', movieList);
+  
 
   useEffect(() => {
     dispatch(getMoviesAction());
@@ -40,7 +41,7 @@ export default function HomePage() {
           {movieList?.results?.map((item) => {
             return (
               <SwiperSlide>
-                <Link to='/'>
+                <Link to='/rebelworks-moviedatabase'>
                   <img
                     src={rebelWorksLogo}
                     alt=''
@@ -49,13 +50,25 @@ export default function HomePage() {
                       marginTop: '2rem',
                       width: '3rem',
                       position: 'absolute',
+                      zIndex: '1',
                     }}
                   ></img>
                 </Link>
-                <div id={item.id}>
-                  <Link to={`/movie/${item.id}`}>
-                    <img src={`${BASE_URL_IMAGE}` + item.backdrop_path} alt={item.title} />
-                  </Link>
+                <div id={item.id} className='swiperContent'>
+                  <img src={`${BASE_URL_IMAGE}` + item.backdrop_path} alt={item.title} />
+                  <div className='swiperOverview'>
+                    <Rating
+                      name='read-only'
+                      value={item.vote_average}
+                      sx={{ color: 'white' }}
+                      readOnly
+                    />
+                    <h1>{item.title}</h1>
+                    <p>{item.overview}</p>
+                    <Link to={`/rebelworks-moviedatabase/movie/${item.id}`}>
+                      <h2>See Details</h2>
+                    </Link>
+                  </div>
                 </div>
               </SwiperSlide>
             );
@@ -64,7 +77,7 @@ export default function HomePage() {
       </div>
       <div className='nowPlaying'>
         <h1>Now Playing</h1>
-        <Link to='/nowplaying'>
+        <Link to='/rebelworks-moviedatabase/nowplaying'>
           <p>See All {'>'} </p>
         </Link>
       </div>
@@ -73,8 +86,9 @@ export default function HomePage() {
           {movieList?.results?.map((item, index) => {
             return (
               <div key={index}>
-                <Link to={`/movie/${item.id}`}>
+                <Link to={`/rebelworks-moviedatabase/movie/${item.id}`}>
                   <MovieCard
+                    rating={item.vote_average}
                     title={item.title}
                     picture={
                       item.poster_path
