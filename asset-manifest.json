@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/rebelworks-moviedatabase/static/css/main.cec94bb3.css",
-    "main.js": "/rebelworks-moviedatabase/static/js/main.798ee707.js",
+    "main.css": "/rebelworks-moviedatabase/static/css/main.1db99f5d.css",
+    "main.js": "/rebelworks-moviedatabase/static/js/main.664f80cd.js",
     "static/js/787.dfa04141.chunk.js": "/rebelworks-moviedatabase/static/js/787.dfa04141.chunk.js",
     "index.html": "/rebelworks-moviedatabase/index.html",
-    "main.cec94bb3.css.map": "/rebelworks-moviedatabase/static/css/main.cec94bb3.css.map",
-    "main.798ee707.js.map": "/rebelworks-moviedatabase/static/js/main.798ee707.js.map",
+    "static/media/angle-left-b.svg": "/rebelworks-moviedatabase/static/media/angle-left-b.7e9ca70a17aa35496a63.svg",
+    "static/media/angle-right-b.svg": "/rebelworks-moviedatabase/static/media/angle-right-b.141f142426f516600276.svg",
+    "main.1db99f5d.css.map": "/rebelworks-moviedatabase/static/css/main.1db99f5d.css.map",
+    "main.664f80cd.js.map": "/rebelworks-moviedatabase/static/js/main.664f80cd.js.map",
     "787.dfa04141.chunk.js.map": "/rebelworks-moviedatabase/static/js/787.dfa04141.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cec94bb3.css",
-    "static/js/main.798ee707.js"
+    "static/css/main.1db99f5d.css",
+    "static/js/main.664f80cd.js"
   ]
 }
