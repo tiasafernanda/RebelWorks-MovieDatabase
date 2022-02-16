@@ -50,6 +50,7 @@ export default function NowPlaying() {
       <div className={styles.category}>
         <h1>Now Playing</h1>
       </div>
+      {/* Card Group */}
       <div className={styles.cardContainer}>
         <div className={styles.cardGroup}>
           {movieList?.results?.map((item, index) => {

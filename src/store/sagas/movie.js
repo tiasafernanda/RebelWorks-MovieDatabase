@@ -55,7 +55,6 @@ function* getSimilarMovies(action) {
     const res = yield axios.get(
       `${BASE_URL}/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
     );
-
     yield put({
       type: GET_SIMILAR_MOVIES_SUCCESS,
       payload: res.data,

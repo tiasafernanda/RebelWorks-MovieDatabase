@@ -60,9 +60,9 @@ export default function MovieDetail() {
       </div>
       <div className={styles.similar} id={movieDetail.id}>
         <h1>You Might Also like This!</h1>
-        {/* <Link to={`/rebelworks-moviedatabase/movie/${movieDetail.id}/similar`}>
+        <Link to={`/rebelworks-moviedatabase/movie/${movieDetail.id}/similar`}>
           <p>See All {'>'} </p>
-        </Link> */}
+        </Link>
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.cardGroup}>

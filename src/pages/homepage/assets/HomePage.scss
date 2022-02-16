@@ -25,6 +25,7 @@
             h1 {
               font-size: 50px;
               color: white;
+              margin: 0;
             }
 
             p {
@@ -53,6 +54,31 @@
             }
           }
         }
+      }
+
+      .swiper-button-next {
+        background-image: url(./angle-right-b.svg);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center;
+        color: red;
+      }
+
+      .swiper-button-next::after {
+        display: none;
+        color: red;
+      }
+
+      .swiper-button-prev {
+        background-image: url(./angle-left-b.svg);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center;
+        color: white;
+      }
+
+      .swiper-button-prev::after {
+        display: none;
       }
 
       .swiper-slide img {

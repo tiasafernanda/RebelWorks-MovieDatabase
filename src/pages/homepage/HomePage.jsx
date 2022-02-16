@@ -19,7 +19,6 @@ SwiperCore.use([EffectFade, Navigation, Pagination]);
 export default function HomePage() {
   const dispatch = useDispatch();
   const movieList = useSelector((state) => state.movie.listMovie.list);
-  
 
   useEffect(() => {
     dispatch(getMoviesAction());
@@ -27,12 +26,18 @@ export default function HomePage() {
 
   return (
     <div className='container'>
+      {/* Carousel Component  */}
       <div className='carousel'>
         <Swiper
           spaceBetween={30}
           effect={'fade'}
           slidesPerView={3}
+          loop={true}
           navigation={true}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
           }}
@@ -61,6 +66,7 @@ export default function HomePage() {
                       name='read-only'
                       value={item.vote_average}
                       sx={{ color: 'white' }}
+                      precision={0.01}
                       readOnly
                     />
                     <h1>{item.title}</h1>
@@ -81,6 +87,7 @@ export default function HomePage() {
           <p>See All {'>'} </p>
         </Link>
       </div>
+      {/* Card Group */}
       <div className='cardContainer'>
         <div className='cardGroup'>
           {movieList?.results?.map((item, index) => {

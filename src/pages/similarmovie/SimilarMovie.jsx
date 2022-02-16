@@ -9,8 +9,6 @@ import { BASE_URL_IMAGE } from '../../constant/constant';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { makeStyles } from '@mui/styles';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 
 const useStyles = makeStyles(() => ({
   ul: {
@@ -22,10 +20,11 @@ const useStyles = makeStyles(() => ({
 
 export default function SimilarMovie() {
   const { id } = useParams();
-  console.log(id);
+
   const classes = useStyles();
   const dispatch = useDispatch();
-  const similarMovie = useSelector((state) => state.movie.similarMovie.similar);
+  const similarMovie = useSelector((state) => state?.movie?.similarMovie?.similar);
+  const movieSimilar = useSelector((state) => state?.movie?.similarMovie?.similar);
 
   useEffect(() => {
     dispatch(getSimilarMoviesAction(id));
@@ -56,7 +55,7 @@ export default function SimilarMovie() {
       </div>
       <div className={styles.cardContainer}>
         <div className={styles.cardGroup}>
-          {similarMovie?.results?.map((item, index) => {
+          {movieSimilar?.results?.map((item, index) => {
             return (
               <div key={index}>
                 <Link to={`/movie/${item.id}`}>
